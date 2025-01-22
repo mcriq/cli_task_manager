@@ -1,5 +1,6 @@
 import json
-from task import Task
+from tabulate import tabulate
+from .task import Task
 
 class TaskList:
     def __init__(self, file_path):
@@ -13,9 +14,8 @@ class TaskList:
 
     
     def display_tasks(self):
-        data = self.tasks
-        for i in range(len(data)):
-            print(f"{i + 1}. {data[i].desc}")
+        table = [[i + 1, task.desc, "Yes" if task.is_complete else "No"] for i, task in enumerate(self.tasks)]
+        print(tabulate(table, headers=["ID", "Description", "Completed"], tablefmt="grid"))
 
     def add_task(self, desc):
         pass
