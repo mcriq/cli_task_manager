@@ -10,4 +10,9 @@ This is a simple command-line todo application.
    cd cli_todo
 
 2. Create a virtual environment:
-   ```python3 -m venv venv```
+   ```sh
+   python3 -m venv venv
+
+3. Activate the virtual environment:
+   ```sh
+   source venv/bin/activate
