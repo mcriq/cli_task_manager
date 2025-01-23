@@ -16,7 +16,7 @@ def main():
         if user_action.lower() == Action.EXIT.value:
             exit_program()
             is_running = False
-            
+
         if user_action == Action.ADD.value:
             description = input("Enter your todo: ")
             task_list.add_task(description)
