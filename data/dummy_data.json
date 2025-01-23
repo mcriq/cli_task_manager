@@ -1,19 +1,5 @@
 {
     "tasks": [
-        {
-            "id": 0,
-            "desc": "Walk the dog",
-            "is_complete": 0
-        },
-        {
-            "id": 1,
-            "desc": "Feed the cats",
-            "is_complete": 1
-        },
-        {
-            "id": 2,
-            "desc": "Write some code",
-            "is_complete": 0
-        }
+        
     ]
 }
