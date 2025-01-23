@@ -1,5 +1,6 @@
 import json
 from tabulate import tabulate
+from enum import Enum
 from .task import Task
 
 class TaskList:
@@ -12,13 +13,18 @@ class TaskList:
             data = json.load(file)
         return [Task(task['desc'], task.get('is_complete')) for task in data['tasks']]
 
-    
     def display_tasks(self):
         table = [[i + 1, task.desc, "Yes" if task.is_complete else "No"] for i, task in enumerate(self.tasks)]
-        print(tabulate(table, headers=["ID", "Description", "Completed"], tablefmt="grid"))
+        print(tabulate(table, headers=["ID", "Description", "Completed"], tablefmt="fancy_grid"))
 
     def add_task(self, desc):
         pass
 
     def complete_stask(self):
         pass
+
+class Action(Enum):
+    ADD = 'add'
+    UPDATE = 'update'
+    COMPLETE = 'complete'
+    DELETE = 'delete'
