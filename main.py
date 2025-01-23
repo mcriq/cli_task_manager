@@ -20,6 +20,8 @@ def main():
             description = input("Enter your todo: ")
             task_list.add_task(description)
             continue
+        if user_action == Action.COMPLETE.value:
+            task_list.complete_task()
 
 
 if __name__ == "__main__":
