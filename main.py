@@ -9,12 +9,18 @@ def main():
     print("Your active tasks:")
     task_list.display_tasks()
     while is_running:
-        user_action = input('What action would you like to take?\n(Try add, update, complete, or delete)\n')
-        if user_action.lower() not in Action:
+        user_action = input('What action would you like to take?\n(Try add, update, complete, delete, or x to exit): ')
+        if user_action.lower() not in Action._value2member_map_:
             print('\n================Invalid command================\n')
             continue
-        print(user_action)
-        is_running = False
+        if user_action.lower() == Action.EXIT.value:
+            print('Exiting todo list. Goodbye...')
+            is_running = False
+        if user_action == Action.ADD.value:
+            description = input("Enter your todo: ")
+            task_list.add_task(description)
+            continue
+
 
 if __name__ == "__main__":
     main()
