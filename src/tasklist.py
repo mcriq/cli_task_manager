@@ -70,13 +70,36 @@ class TaskList:
             self.display_tasks()
 
     def delete_task(self):
-        pass
+        choices = []
+        for task in self.tasks:
+            choices.append(task.desc)
+        choices.append(Choice(value=None, name="Exit"))
+
+        action = inquirer.select(
+        message="Select the task to delete:",
+        choices=choices,
+        default=None,
+        ).execute()
+        if action == None:
+            self.display_tasks()
+            return
+        else:
+            print(f"ACTION: {action}")
+            with open(self.file_path, 'r+') as file:
+                file_data = json.load(file)
+                for item in file_data['tasks']:
+                    if item["desc"] == action:
+                        file_data['tasks'].remove(item)
+                file.seek(0)
+                json.dump(file_data, file, indent=4)
+                file.truncate()
+            self.tasks = self.get_tasks()
+            self.display_tasks()
 
 
 
 class Action(Enum):
     ADD = 'add'
-    UPDATE = 'update'
-    COMPLETE = 'complete'
-    DELETE = 'delete'
+    COMPLETE = 'comp'
+    DELETE = 'del'
     EXIT = 'x'
