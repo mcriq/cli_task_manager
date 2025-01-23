@@ -18,7 +18,6 @@ This is a simple command-line todo application.
    ```sh
    source venv/bin/activate
    ```
-   <br>
    * On Windows:
    ```sh
    .\venv\Scripts\activate
